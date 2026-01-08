@@ -22,31 +22,69 @@
         align-items: center;
         flex: 1;
       }
+      .button {
+        background-color: #C0C0C0 ;
+        font-size: 25px ;
+        padding: 14px 40px ;
+        border: 2px solid black;
+        transition-duration: 0.4s;
+        
+      }
+      .button:hover {
+        background-color: #FFFAF0 ;
+        color: red ;
+      }
+      .image {
+          border : 5px solid #000;
+          border-radius: 20% ;
+          padding : 5px ;
+          width : 250px ;
+          height : 250px ;
+      }
     </style>
   </head>
   <body>
     <div class="container">
       <div class="column" id="column1">
         <h1 id="heading1">Hello</h1>
-        <button onclick="change1()">Become Red!</button>
+            <!-- <input id="text1" type="text" value=""> -->
+        <img src="https://images.unsplash.com/photo-1765871320786-e478d7ac5777?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+           alt="Swirling Rock Formations with warm light" class="image"> 
+      </img>
+        <button class="button" onclick="change1()">Change Me!</button>
       </div>
       <div class="column" id="column2">
         <h1 id="heading2">World</h1>
-        <button onclick="change2()">Become Green!</button>
+            <!-- <input id="text2" type="text" value="" > -->
+        <img src="https://images.unsplash.com/photo-1766155072335-ab7e0465c35b?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
+        alt="train arriving at snowy platform" class="image"> 
+      </img>
+        <button class="button" onclick="change2()">No, Change Me!</button>
       </div>
     </div>
     <script>
-      function change1() {
-        document.getElementById("column1").style.backgroundColor = "red";
-        document.getElementById("heading1");
-        heading1.style.fontFamily = "Georgia, sans-serif";
-      }
 
+    let heading1Id= document.getElementById("heading1");
+    let input1Id= document.getElementById("input1");
+
+      function change1() {
+        document.getElementById("column1").style.backgroundColor = "#6495ED";
+        document.getElementById("heading1");
+        (heading1.style.fontFamily = "Georgia"), sans - serif;
+        // document.getElementById()
+      }
       function change2() {
-        document.getElementById("column2").style.backgroundColor = "green";
+        document.getElementById("column2").style.backgroundColor = "#F0FFFF";
         document.getElementById("heading2");
-        heading2.style.fontFamily = "Georgia, serif";
+        (heading2.style.fontFamily = "Georgia"), serif;
+        // document.getElementById()
       }
     </script>
+    <!-- 
+     Extension 1: add text fields under the headings, and replace the heading text with
+          the value of the text fields when the buttons are clicked!
+
+    Extension 2: Move the CSS and JS code into external files linked from the HTML. 
+    -->
   </body>
 </html>
