@@ -257,7 +257,7 @@ console.log(under50) // 3 matching items in under50 array
 
 // --------------------------------------------------------------------------------------------------------------------- //
 
-/*                                                    map method
+/*                                                    map method IMPORTANT!!!!!!!!!!!!!!
 Syntax */
 const result = arr.map(function(item, index, array) {
  // return the new value instead of item
@@ -319,3 +319,58 @@ const reversed1 = elements.reverse() // modifies the original
 const reversed2 = [...elements].reverse() // clone first to preserve the original
 console.log(elements) // [ 'Air', 'Fire', 'Water', 'Wind' ]
 console.log(reversed2) // [ 'Wind', 'Water', 'Fire', 'Air' ] (reversed twice)
+
+// --------------------------------------------------------------------------------------------------------------------- //
+
+/*                                               reduce method
+Syntax */
+const value = arr.reduce(function(accumulator, item, index, array) {
+ // . . .
+},[initial]);
+
+/* When function is applied, the result of the previous function call is passed to the next one as the first argument, in the
+accumulator that stores the combined result of previous executions. Finally, this single accumulated value is returned. */
+const products = [
+ { id: 1, title: 'Sleeveless Tee', price: 23.95, category: 'Shirts', quantity: 2 },
+ { id: 2, title: "Men's Hoodie", price: 54.95, category: 'Winter', quantity: 3 },
+ { id: 3, title: "Denim Jeans", price: 49.95, category: 'Pants', quantity: 5 }
+] // initial (below) should be 0 for reliability in calculating totals
+const totalPrice = products.reduce((currentTotal, currentProduct) => currentTotal + currentProduct.price, 0)
+const totalQty = products.reduce((currentQty, currentProduct) => currentQty + currentProduct.quantity, 0)
+console.log(totalPrice) // 128.85000000000002
+console.log(totalQty) // 10
+
+/* The previous array functions (and there are more) can be combined (chained) together to simplify complex tasks on a list
+of items */
+
+const products = [
+ { id: 1, title: 'Sleeveless Tee', price: 23.95, category: 'Shirts', quantity: 2 },
+ { id: 2, title: "Men's Hoodie", price: 54.95, category: 'Winter', quantity: 3 },
+ { id: 3, title: "Denim Jeans", price: 49.95, category: 'Pants', quantity: 5 }
+]
+// get the titles of all products over $25:
+const over25Titles = products.filter(prod => prod.price > 25).map(prod => prod.title)
+console.log(over25Titles) // [ "Men's Hoodie", 'Denim Jeans' ]
+// list product ids and titles in descending order of price:
+const hiloProducts = [...products].sort((p1, p2) => p1.price - p2.price).reverse()
+ .map(prod => ({id: prod.id, title: prod.title}))
+console.log(hiloProducts)
+// [ {id: 2, title: "Men's Hoodie"}, {id: 3, title: 'Denim Jeans'}, {id: 1, title: 'Sleeveless Tee'} ] 
+
+// --------------------------------------------------------------------------------------------------------------------- //
+
+/*                                                Static Method Array.from
+ Syntax */
+array.from(arraylike, mapFn, thisArg)
+array.from(iterable, mapFn, thisArg)
+
+// Conversion from Array-like object or iterable to Array (creates shallow copy)
+
+console.log( Array.from("string") ) // [ 's', 't', 'r', 'i', 'n', 'g' ]
+console.log( Array.from(new Set(['cat', 'bat', 'sat', 'cat', 'bat'])) ) // [ 'cat', 'bat', 'sat' ]
+console.log( Array.from(new Map([[1, 'one'], [2, 'two'], [3, 'three']])) )
+// [ [ 1, 'one' ], [ 2, 'two' ], [ 3, 'three' ] ]
+function makeArray() {
+ return Array.from(arguments);
+}
+console.log( makeArray(1, 2, 3) ); // [ 1, 2, 3 ]
