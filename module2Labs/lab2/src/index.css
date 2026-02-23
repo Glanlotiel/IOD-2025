@@ -1,0 +1,147 @@
+/* I. Selectors */
+/* Put styles for questions 1.1, 1.2, 1.3 and 1.4 here */
+
+article {
+  margin: 15px;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+.style-me1 {
+  color: red;
+}
+
+#style-me2 {
+  color: blue;
+}
+
+.style-me1#style-me2 {
+  color: purple;
+}
+/* Put styles for questions 2.1 and 2.2 here */
+
+.my-descendants-are-styled p {
+  background-color: red;
+}
+
+.my-children-are-styled > p {
+  background-color: lightgreen;
+}
+
+/* II. Box model and common properties */
+/* Put styles for questions 1-8 here */
+
+.box {
+  background-color: lightgray;
+  /* margin units */
+  margin: 10px;
+  margin: 10px, 20px;
+  margin: 5px, 10px, 15px, 5px;
+  /* padding units */
+  padding: 10%;
+  /* padding: 10px, 2em; */
+  /* padding: 2em, 5px, 10px, 20%; */
+  /*width */
+  width: 10px;
+  width: 5rem;
+  width: 50vw;
+
+  /* height */
+  height: 15px;
+  height: 10rem;
+  height: 20vh;
+  /* important! */
+  height: 50px !important;
+  width: 80vw !important;
+
+  /* border */
+  border: 10px solid #1b551b;
+  /* boxsizing */
+  box-sizing: border-box;
+  /* box-sizing: content-box; */
+
+  /* overflow */
+  /* overflow: scroll; */
+  /* overflow: hidden; */
+  overflow: auto;
+
+  /* outline */
+  outline: 10px solid #333333;
+
+  /* border radius */
+  border-radius: 40%;
+  /* background image */
+  background-image: url(./assets/images/img1.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+/* III. Positioning */
+/* Put styles for questions 1-3 here */
+.position-absolute {
+  position: absolute;
+  bottom: 0;
+  left: 50px;
+  right: 20px;
+  background-color: bisque;
+}
+.position-relative {
+  background-color: chocolate;
+}
+
+.position-sticky {
+  position: sticky;
+  background-color: aqua;
+  top: 0;
+}
+/* IV. Styling text */
+/* Put styles for questions 1-10 here */
+.text-style {
+  color: brown;
+  font-size: large;
+  line-height: 25px;
+  font-weight: 400;
+  font-family: "Oswald", sans-serif;
+  text-align: center;
+  letter-spacing: 5px;
+  word-spacing: 20px;
+  text-transform: lowercase;
+  text-decoration: underline;
+}
+/* V. Styling links */
+/* Put styles for questions 1-3 here */
+a:link {
+  color: violet;
+  font-size: initial;
+  font-weight: 300;
+  text-decoration: none;
+}
+a:hover,
+a:active,
+a:focus {
+  color: purple;
+  text-decoration: dotted;
+}
+a:visited {
+  color: darkslateblue;
+  font-style: oblique;
+}
+/* VI. calc() */
+/* Put styles for questions 1-3 here */
+
+.calc-style {
+  width: 100vw;
+  width: calc(100vw - 100px);
+  background-color: blanchedalmond;
+}
+.fixed-width-col {
+  width: 350px;
+  display: inline-block;
+}
+
+.fluid-col {
+  display: inline-block;
+  /* width: calc(100vw - 350px); */
+  width: 20vw;
+}

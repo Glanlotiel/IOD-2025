@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Lab1Home</title>
+    <meta charset="UTF-8" />
+    <meta name="author" content="Thomas Long" />
+    <meta name="description" content="This is the lab1 website index" />
+    <meta name="keywords" content="Lab1, HTML, CSS" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <style>
+      table,
+      th,
+      td {
+        border: 1px solid black;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <!-- works like <a href="/index.html">Home</a> -->
+        <a href="index.html">Home</a>
+        <a href="form.html">Form</a>
+      </nav>
+    </header>
+    <h1>My HTML Journey</h1>
+    <article>
+      <h2>Learning elements - div, span, p, pre, ul, li, ol, article.</h2>
+      <div>Hello</div>
+      <div>World</div>
+      <div>Potatoes</div>
+      <span>Greetings</span> <span>Earthlings</span> <span>!</span>
+      <p>p represents paragraph without preserving spacing</p>
+      <pre>
+Text in         a pre element
+is displayed in a fixed-width
+font, and it preserves
+both      spaces and
+line breaks
+</pre
+      >
+      <ul>
+        <li>corn</li>
+        <li>beef</li>
+        <li>beets</li>
+        <li>carrots</li>
+      </ul>
+      <ol>
+        <li>cats</li>
+        <li>dogs</li>
+        <li>birds</li>
+        <ol>
+          <li>Canary</li>
+          <li>Eagle</li>
+        </ol>
+      </ol>
+    </article>
+
+    <article>
+      <h2>My Table Journey</h2>
+      <table>
+        <thead>
+          <tr>
+            <th colspan="2">First header</th>
+            <th>Second header</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>First cell - first row</td>
+            <td>Second cell - first row</td>
+            <td>Third cell - first row</td>
+          </tr>
+          <tr>
+            <td>First cell - second row</td>
+            <td>Second cell - second row</td>
+            <td rowspan="2">Third cell - second row</td>
+          </tr>
+          <tr>
+            <td>First cell - third row</td>
+            <td>Second cell - third row</td>
+          </tr>
+        </tbody>
+      </table>
+    </article>
+    <article>
+      <h2>HTML media journey</h2>
+      <img
+        src="https://picsum.photos/400/400"
+        alt=""
+        width="500"
+        height="600"
+      />
+      <img
+        src="assets/html_lab_image.jpg"
+        alt="Cloudy Sunet"
+        width="500"
+        height="600"
+      />
+
+      <video autoplay width="250">
+        <source src="/assets/flower.webm" type="video/webm" />
+        Sorry, your browser doesn't support embedded videos.
+      </video>
+      <audio autoplay src="/assets/t-rex-roar.mp3">
+        Your browser does not support the <code>audio</code> element.
+      </audio>
+    </article>
+    <main></main>
+
+    <footer>Copyright &copy; 2024</footer>
+  </body>
+</html>

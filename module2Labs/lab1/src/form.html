@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+  <head> </head>
+
+  <body>
+    <header>
+      <nav>
+        <!-- works like <a href="/index.html">Home</a> -->
+        <a href="index.html">Home</a>
+        <a href="form.html">Form</a>
+      </nav>
+    </header>
+
+    <main>
+      <form method="POST" action="http://127.0.0.1:5500/form">
+        <div>
+          <label for="fname">First Name:</label>
+          <input type="text" id="fname" name="fname" />
+        </div>
+        <div>
+          <label for="lname">Last Name:</label>
+          <input type="text" id="lname" name="lname" />
+        </div>
+        <h3>Favorite Coding Language</h3>
+        <div>
+          <label for="python">Python</label>
+          <input type="radio" id="python" name="python" />
+        </div>
+        <div>
+          <label for="hmtl">Html</label>
+          <input type="radio" id="hmtl" name="html" />
+        </div>
+        <div>
+          <label for="css">Css</label>
+          <input type="radio" id="css" name="css" />
+        </div>
+        <h3>Car owned</h3>
+        <div>
+          <label for="ford">Ford</label>
+          <input type="checkbox" id="ford" name="ford" />
+        </div>
+        <div>
+          <label for="dodge">Dodge</label>
+          <input type="checkbox" id="dodge" name="dodge" />
+        </div>
+        <div>
+          <label for="toyota">Toyota</label>
+          <input type="checkbox" id="toyota" name="toyota" />
+        </div>
+        <button type="submit">Submit form</button>
+      </form>
+    </main>
+
+    <footer>Copyright &copy; 2024</footer>
+  </body>
+</html>
