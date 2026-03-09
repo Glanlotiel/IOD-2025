@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
+      crossorigin="anonymous"
+    />
+    <title>Calculatorinator</title>
+  </head>
+  <body>
+    <h1 class="header d-flex justify-content-center">Calculatorinator!</h1>
+    <main class="container text-center">
+      <article class="calculatorW card">
+        <div>
+          <table
+            id="calculatorT"
+            class="table table-secondary table-bordered"
+          >
+            <tbody>
+              <div id="calculatorResult" class="card-header resultBox">0</div>
+
+              <tr scope="row">
+                <td><button id="1" class="btn btn-info">1</button></td>
+                <td><button id="2" class="btn btn-info">2</button></td>
+                <td><button id="3" class="btn btn-info">3</button></td>
+                <td><button id="/" class="btn btn-info">/</button></td>
+                <td class="enterButton" rowspan="3">
+                  <button id="=" class="btn btn-info">=</button>
+                </td>
+              </tr>
+
+              <tr scope="row">
+                <td><button id="4" class="btn btn-info">4</button></td>
+                <td><button id="5" class="btn btn-info">5</button></td>
+                <td><button id="6" class="btn btn-info">6</button></td>
+                <td><button id="*" class="btn btn-info">*</button></td>
+              </tr>
+
+              <tr scope="row">
+                <td><button id="7" class="btn btn-info">7</button></td>
+                <td><button id="8" class="btn btn-info">8</button></td>
+                <td><button id="9" class="btn btn-info">9</button></td>
+                <td><button id="-" class="btn btn-info">-</button></td>
+              </tr>
+
+              <tr scope="row">
+                <td><button id="0" class="btn btn-info">0</button></td>
+                <td colspan="2">
+                  <button id="clearResult" class="btn btn-info">Clear</button>
+                </td>
+                <td><button id="+" class="btn btn-info">+</button></td>
+                <td><button id="." class="btn btn-info">.</button></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </main>
+    <footer class="footer d-flex justify-content-center">
+      <p>Made by Thomas C. Long with Bootstrap</p>
+    </footer>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/calculator.js"></script>
+  </body>
+</html>
