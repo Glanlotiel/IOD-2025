@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h2>Luxon Date</h2>
+    <!-- container for Luxon output -->
+    <div id="displayLuxon"></div>
+
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3/build/global/luxon.min.js"></script>
+
+    <script type="text/javascript">
+      (function () {
+        // create a shortcut and a new Luxon date
+        const DateTime = luxon.DateTime;
+        let nowLuxon = DateTime.now();
+        let eDisplayLuxon = document.getElementById("displayLuxon");
+
+        let Date1 = DateTime.fromISO("2002-05-13");
+        let Date2 = DateTime.fromISO("2010-08-22");
+
+        let birthLuxon = DateTime.fromISO("2001-06-27");
+
+        let diff = nowLuxon
+          .diff(birthLuxon, ["years", "months", "days"])
+          .toObject();
+
+        let diffDays = nowLuxon.diff(birthLuxon, ["days"]).toObject();
+
+        let birthday = nowLuxon.toFormat("MMMM dd, yyyy");
+
+        if (Date1 < Date2) {
+          eDisplayLuxon.innerHTML += `<p> ${Date1.year} is older than ${Date2.year}</p>`;
+        } else if (Date1 > Date2) {
+          eDisplayLuxon.innerHTML += `<p> ${Date1.year} is younger than ${Date2.year}</p>`;
+        } else {
+          eDisplayLuxon.innerHTML += `<p> ${Date1.year} is the same as ${Date2.year}</p>`;
+        }
+
+        if ((nowLuxon - Date1) < (nowLuxon - Date2)) {
+          eDisplayLuxon.innerHTML += `<p> ${Date1.year} is closer to ${nowLuxon.year} than ${Date2.year} </p>`;
+        } else if (nowLuxon - Date1 > nowLuxon - Date2) {
+          eDisplayLuxon.innerHTML += `<p> ${Date2.year} is closer to ${nowLuxon.year} than ${Date1.year} </p>`;
+        } else {
+          eDisplayLuxon.innerHTML += `<p> The Dates are equally close to ${nowLuxon.year}</p>`;
+        }
+
+        eDisplayLuxon.innerHTML += `<p> Age: ${Math.floor(diffDays.days)} days old`;
+        eDisplayLuxon.innerHTML += `<p> Age: ${diff.years} years, ${diff.months} months, ${Math.floor(diff.days)} days old. </p>`;
+
+        let London = nowLuxon
+          .setZone("Europe/London")
+          .toLocaleString(DateTime.DATETIME_FULL);
+        eDisplayLuxon.innerHTML += `<p>London date: ${London}</p>`;
+      })();
+    </script>
+  </body>
+</html>
