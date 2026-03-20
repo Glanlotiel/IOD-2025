@@ -11,36 +11,29 @@ fetch("https://fakestoreapi.com/products")
   });
 
 function loadProducts(products) {
-  // STEP 2:
   // Clear out the current product list before reloading
   document.getElementById("product-list").innerText = "";
-  // STEP 3:
   // Loop through each product
   products.forEach((product) => {
-    // STEP 4:
     // Create a category slug version of the category name
-    // Example:
-    // "men's clothing" -> something CSS-friendly
-    // Hint:
-    // replace spaces
-    // remove apostrophes
-    card.classList.add(slug) 
-    // STEP 5:
+    let slug = product.category.split("'").join("").split(" ").join("-");
     // Store category info in the Map
-    // STEP 6:
+    categories.set(product.category, slug);
     // Call a function that creates and displays one product card
+    addProduct(product, slug);
   });
-  // STEP 7:
+
   // If no products exist, show a "No matching products" message
+  if (products.length === 0) {
+    document.getElementById("product-list").innerText = "No matching products.";
+  }
 }
 
-function addProduct(item) {
-  // STEP 8:
+function addProduct(item, slug) {
   // Clone the template
   const template = document
     .getElementById("card-template")
     .content.cloneNode(true);
-  // STEP 9:
   // Fill in the card with product data:
   // - title
   template.querySelector(".card-header").innerText = item.title;
@@ -55,42 +48,42 @@ function addProduct(item) {
   // - shortened description
   template.querySelector(".card-text").innerText =
     item.description.substring(0, 100) + "...";
-  // STEP 10:
   // Add a CSS class to the card based on the category slug
-  template.querySelector(".card").classList.add(item.category);
-  // STEP 11:
-  // Give the card a unique id using the product id
+  template.querySelector(".card").classList.add(slug);
+  //  unique id using the product id
   template.querySelector(".card").id = item.id;
-  // STEP 12:
-  // Add a click event to the button so it expands the full description
+  // click event to the button so it expands the full description
   template.querySelector(".btn").addEventListener("click", () => {
     template.querySelector(".card-text").innerText = item.description;
   });
-  // STEP 13:
   // Append the finished card to #product-list
   document.querySelector("#product-list").appendChild(template);
 }
 
 function getCategoryIcon(cat) {
-  // STEP 14:
   // Return a different icon depending on the category
-  //
-  // Hint:
-  // use switch(cat.toLowerCase())
-  //
-  // Categories include:
-  // - men's clothing
-  // - women's clothing
-  // - jewelery
-  // - electronics
-  //
-  // Add a default fallback too
+  switch (cat.toLowerCase()) {
+    case "men's clothing":
+      return "👔";
+    case "women's clothing":
+      return "👗";
+    case "jewelery":
+      return "💍";
+    case "electronics":
+      return "💻";
+    default:
+      return "🛍️";
+  }
 }
 function loadFilterOptions() {
   // STEP 15:
   // Get the category filter dropdown
+  const filter = document.getElementById("category_filter");
   // STEP 16:
   // Loop through the categories Map
+  categories.forEach((slug, category) => {
+    
+  });
   // STEP 17:
   // Add one <option> for each category
 }
