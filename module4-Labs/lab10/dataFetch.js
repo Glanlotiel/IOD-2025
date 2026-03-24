@@ -1,11 +1,12 @@
 let categories = new Map();
 let allProducts;
-
+let currentProducts = [];
 // STEP 1:
 fetch("https://fakestoreapi.com/products")
   .then((response) => response.json())
   .then((json) => {
     allProducts = json;
+    currentProducts = allProducts;
     loadProducts(allProducts);
     loadFilterOptions();
   });
@@ -53,8 +54,8 @@ function addProduct(item, slug) {
   //  unique id using the product id
   template.querySelector(".card").id = item.id;
   // click event to the button so it expands the full description
-  template.querySelector(".btn").addEventListener("click", () => {
-    template.querySelector(".card-text").innerText = item.description;
+  template.querySelector(".btn").addEventListener("click", (e) => {
+    expandText(e, item.id, item.description);
   });
   // Append the finished card to #product-list
   document.querySelector("#product-list").appendChild(template);
@@ -76,62 +77,96 @@ function getCategoryIcon(cat) {
   }
 }
 function loadFilterOptions() {
-  // STEP 15:
   // Get the category filter dropdown
   const filter = document.getElementById("category_filter");
-  // STEP 16:
   // Loop through the categories Map
   categories.forEach((slug, category) => {
-    
+    // Add one <option> for each category
+    const option = document.createElement("option");
+    option.textContent = getCategoryIcon(category) + " " + category;
+    option.value = category;
+    filter.appendChild(option);
   });
-  // STEP 17:
-  // Add one <option> for each category
 }
 function filterProducts(e) {
-  // STEP 18:
   // Get the selected category from the dropdown
-  // STEP 19:
-  // Filter allProducts so only matching products remain
-  // STEP 20:
-  // Special case:
   // If "All Products" is selected, show everything
-  // STEP 21:
+  if (e.target.value === "All Products") {
+    currentProducts = allProducts;
+    loadProducts(allProducts);
+  } else {
+    // Filter allProducts so only matching products remain
+    const filtered = allProducts.filter((product) => {
+      return product.category === e.target.value;
+    });
+    currentProducts = filtered;
+    loadProducts(filtered);
+  }
   // Reload the products on screen
 }
 function sortProducts(e) {
-  // STEP 22:
   // Get the selected sort option
-  // STEP 23:
   // Make a copy of allProducts before sorting
-  //
-  // Hint:
-  // Don't sort the original directly if you want to preserve it
-  // STEP 24:
-  // Use a switch statement to sort by:
-  // - price low to high
-  // - price high to low
-  // - title A-Z
-  // - title Z-A
-  // STEP 25:
+  let copied = [...currentProducts];
+  switch (e.target.value) {
+    case "price_lohi":
+      copied.sort((x, y) => {
+        return x.price - y.price;
+      });
+      loadProducts(copied);
+      break;
+
+    case "price_hilo":
+      copied.sort((x, y) => {
+        return y.price - x.price;
+      });
+      loadProducts(copied);
+      break;
+
+    case "title_az":
+      copied.sort((x, y) => {
+        return x.title.localeCompare(y.title);
+      });
+      loadProducts(copied);
+      break;
+
+    case "title_za":
+      copied.sort((x, y) => {
+        return y.title.localeCompare(x.title);
+      });
+      loadProducts(copied);
+      break;
+
+    case "id":
+      loadProducts(currentProducts);
+      break;
+  }
   // Reload the sorted products
 }
 function searchProducts() {
-  // STEP 26:
   // Get the text from the search input
   // Convert it to lowercase
-  // STEP 27:
+  const search = document.getElementById("searchText").value.toLowerCase();
   // Filter allProducts by checking whether the search text appears in:
   // - title
   // - description
   // - category
-  // STEP 28:
+  let searchFilter = allProducts.filter((product) => {
+    return (
+      product.title.toLowerCase().includes(search) ||
+      product.description.toLowerCase().includes(search) ||
+      product.category.toLowerCase().includes(search)
+    );
+  });
+  loadProducts(searchFilter);
   // Reload only the matching products
 }
+
 function expandText(e, productId, fullDescription) {
-  // STEP 29:
-  // Prevent the link/button from jumping the page
-  // STEP 30:
   // Find the correct card by id
-  // STEP 31:
+  const card = document.getElementById(productId);
+  // Prevent the link/button from jumping the page
+  e.preventDefault();
   // Replace the shortened description with the full description
+  card.querySelector(".card-text").innerText = fullDescription;
 }
