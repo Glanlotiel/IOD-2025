@@ -1,0 +1,19 @@
+{
+  "name": "multi-server-lab",
+  "version": "1.0.0",
+  "description": "basic backend app with multiple servers on different ports",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "jest": "^30.3.0",
+    "supertest": "^7.2.2",
+    "swagger-ui-express": "^5.0.1"
+  }
+}
