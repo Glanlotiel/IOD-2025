@@ -1,0 +1,48 @@
+.big-cats {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 32px 20px;
+  box-sizing: border-box;
+}
+
+.big-cats__controls {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 24px;
+}
+
+.big-cats__controls button {
+  font-family: var(--mono);
+  font-size: 14px;
+  padding: 6px 16px;
+  border-radius: 5px;
+  color: var(--accent);
+  background: var(--accent-bg);
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.big-cats__controls button:hover {
+  border-color: var(--accent-border);
+}
+
+.big-cats__controls button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.big-cats__controls button.active {
+  border-color: var(--accent);
+}
+
+.big-cats__list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 0;
+  margin: 0;
+}
