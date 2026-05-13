@@ -1,0 +1,106 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Fake eCommerce Store API",
+    "description": "Express backend that proxies the Fake Store API for the eCommerce store frontend.",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:3000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Products",
+      "description": "Product data endpoints"
+    }
+  ],
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/products": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get all products",
+        "description": "Returns a list of all products fetched from the Fake Store API.",
+        "responses": {
+          "200": {
+            "description": "A list of products",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Product"
+              }
+            }
+          },
+          "500": {
+            "description": "Failed to fetch products",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    },
+    "/products/{id}": {
+      "get": {
+        "tags": ["Products"],
+        "summary": "Get a single product by ID",
+        "description": "Returns a single product matching the given ID.",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "integer",
+            "description": "The product ID",
+            "example": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A single product",
+            "schema": {
+              "$ref": "#/definitions/Product"
+            }
+          },
+          "500": {
+            "description": "Failed to fetch product",
+            "schema": {
+              "$ref": "#/definitions/Error"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Product": {
+      "type": "object",
+      "properties": {
+        "id": { "type": "integer", "example": 1 },
+        "title": { "type": "string", "example": "Fjallraven - Foldsack No. 1 Backpack" },
+        "price": { "type": "number", "example": 109.95 },
+        "description": { "type": "string", "example": "Your perfect pack for everyday use." },
+        "category": { "type": "string", "example": "men's clothing" },
+        "image": { "type": "string", "example": "https://fakestoreapi.com/img/81fAn9oTYML._AC_UY879_.jpg" },
+        "rating": {
+          "type": "object",
+          "properties": {
+            "rate": { "type": "number", "example": 3.9 },
+            "count": { "type": "integer", "example": 120 }
+          }
+        }
+      }
+    },
+    "Error": {
+      "type": "object",
+      "properties": {
+        "error": { "type": "string", "example": "Failed to fetch products" }
+      }
+    }
+  }
+}
